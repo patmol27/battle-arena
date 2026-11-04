@@ -1,6 +1,8 @@
 import java.util.Random;
 
 public class Mage extends Character {
+    private static final int MAXIMUM_HP = 90;
+
     private int minimumDamage = 8;
     private int maximumDamage = 18;
     private int minimumHeal = 10;
@@ -52,6 +54,13 @@ public class Mage extends Character {
 
     public int heal(int minimumHeal, int maximumHeal) {
         int healingAmount = random.nextInt(minimumHeal, maximumHeal);
+
+        int hp = getHP();
+        hp += healingAmount;
+        if (hp > MAXIMUM_HP) {
+            hp = MAXIMUM_HP;
+        }
+        setHP(hp);
 
         return healingAmount;
     }
