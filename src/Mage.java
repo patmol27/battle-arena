@@ -55,12 +55,12 @@ public class Mage extends Character {
     public int heal(int minimumHeal, int maximumHeal) {
         int healingAmount = random.nextInt(minimumHeal, maximumHeal);
 
-        int hp = getHP();
+        int hp = getHp();
         hp += healingAmount;
         if (hp > MAXIMUM_HP) {
             hp = MAXIMUM_HP;
         }
-        setHP(hp);
+        setHp(hp);
 
         return healingAmount;
     }
