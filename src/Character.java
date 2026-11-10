@@ -14,9 +14,8 @@ public class Character {
 
     Random damage = new Random();
 
-    public int giveDamage(){
-return 0;
-
+    public int giveDamage(int minimumDamage, int maximumDamage){
+        return damage.nextInt(minimumDamage,maximumDamage);
     }
 
 
