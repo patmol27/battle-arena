@@ -18,7 +18,7 @@ public class MageTest {
 
     @Test
     void healShouldNotHealAboveMaximumHp() {
-        mage.heal();
+        mage.heal(mage.getMinimumHeal(), mage.getMaximumHeal());
 
         assertEquals(90, mage.getHp());
     }
