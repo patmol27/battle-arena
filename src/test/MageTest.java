@@ -20,6 +20,6 @@ public class MageTest {
     void healShouldNotHealAboveMaximumHp() {
         mage.heal();
 
-        Assertions.assertEquals(90, mage.getHp());
+        assertEquals(90, mage.getHp());
     }
 }
