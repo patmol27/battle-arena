@@ -1,3 +1,5 @@
+package java;
+
 public class Rogue extends Character{
 
     private static final int MAXIMUM_HP = 95;
