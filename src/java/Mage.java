@@ -12,8 +12,8 @@ public class Mage extends Character {
 
     private Random random = new Random();
 
-    public Mage(int hp, String name) {
-        super(hp, name);
+    public Mage(String name) {
+        super(MAXIMUM_HP, name);
     }
 
     public int getMinimumDamage() {

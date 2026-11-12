@@ -12,7 +12,7 @@ public class MageTest {
 
     @BeforeEach
     void setUp() {
-        mage = new Mage(90, "Mage");
+        mage = new Mage("Mage");
     }
 
     @Test
