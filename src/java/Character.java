@@ -14,13 +14,17 @@ public class Character {
 
     }
 
-    Random damage = new Random();
+    Random random = new Random();
 
     public int giveDamage(int minimumDamage, int maximumDamage){
-        return damage.nextInt(minimumDamage,maximumDamage);
+        int damage = random.nextInt(minimumDamage,maximumDamage);
+        return damage;
     }
 
-
+    public int takeDamage(int damage){
+        hp = hp -(damage);
+        return hp;
+    }
     public int getHp() {
         return hp;
     }
