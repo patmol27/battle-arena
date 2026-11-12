@@ -1,11 +1,15 @@
 package java;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
+    private Random random = new Random();
 
-    public void setUpCharacters() {
+    public void setUpPlayerCharacter() {
         System.out.println("Enter your name.");
         String playerName = scanner.nextLine();
 
@@ -26,6 +30,15 @@ public class Game {
                 System.out.println("You didn't enter a valid character! Try again.");
             }
         }
+    }
+
+    public void setUpComputerCharacter() {
+        int randomisedCharacterChoice = random.nextInt(3);
+        List<String> characterList = new ArrayList<>();
+        characterList.add("Warrior");
+        characterList.add("Mage");
+        characterList.add("Rogue");
+
     }
 
 }
