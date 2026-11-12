@@ -6,12 +6,10 @@ public class Warrior extends Character {
     private int maximumDamage = 15;
     private boolean shield = false;
 
-    public Warrior(String name) {
-        super(120, name);
-    }
-
-    public int attack() {
-        return giveDamage(minimumDamage, maximumDamage + 1);
+    public Warrior(int hp, String name, int minimumDamage, int maximumDamage) {
+        super(hp, name);
+        this.minimumDamage = minimumDamage;
+        this.maximumDamage = maximumDamage;
     }
 
     public void useShield() {
