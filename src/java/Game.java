@@ -14,13 +14,13 @@ public class Game {
             String playerCharacter = scanner.nextLine();
 
             if (playerCharacter.equals("Warrior")) {
-                Warrior warrior = new Warrior(120, playerName);
+                Warrior warrior = new Warrior(playerName);
                 break;
             } else if (playerCharacter.equals("Mage")) {
-                Mage mage = new Mage(90, playerName);
+                Mage mage = new Mage(playerName);
                 break;
             } else if (playerCharacter.equals("Rogue")) {
-                Rogue rogue = new Rogue(100, playerName);
+                Rogue rogue = new Rogue(playerName);
                 break;
             } else {
                 System.out.println("You didn't enter a valid character! Try again.");
