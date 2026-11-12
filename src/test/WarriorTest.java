@@ -1,9 +1,10 @@
 package test;
 
 import org.junit.jupiter.api.Test;
+import java.Warrior;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WarriorTest {
+class WarriorTest {
 
     @Test
     void testWarriorHp() {
