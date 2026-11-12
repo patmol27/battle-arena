@@ -12,10 +12,11 @@ public class Warrior extends Character {
     }
 
     public void useShield() {
+
         shield = true;
     }
 
-    public void takeDamage(int damage) {
+    public void warriorShield(int damage) {
         if (shield == true) {
             shield = false;
         } else {
