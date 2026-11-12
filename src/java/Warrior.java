@@ -2,16 +2,13 @@ package java;
 
 public class Warrior extends Character {
 
+    private static final int MAXIMUM_HP = 120;
     private int minimumDamage = 5;
     private int maximumDamage = 15;
     private boolean shield = false;
 
     public Warrior(String name) {
-        super(120, name);
-    }
-
-    public int attack() {
-        return giveDamage(minimumDamage, maximumDamage + 1);
+        super(MAXIMUM_HP, name);
     }
 
     public void useShield() {
