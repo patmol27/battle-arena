@@ -48,12 +48,6 @@ public class Mage extends Character {
         this.maximumHeal = maximumHeal;
     }
 
-    public int attack(int minimumDamage, int maximumDamage) {
-        int damage = random.nextInt(minimumDamage,maximumDamage);
-
-        return damage;
-    }
-
     public int heal(int minimumHeal, int maximumHeal) {
         int healingAmount = random.nextInt(minimumHeal, maximumHeal);
 
