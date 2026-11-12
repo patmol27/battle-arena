@@ -11,25 +11,16 @@ public class Rogue extends Character{
     private int minEviscerateDamage = 25;
     private int maxEviscerateDamage = 50;
 
-    public Rogue(int hp, String name) {
+    public Rogue(String name) {
 
-        super(hp, name);
+        super(MAXIMUM_HP, name);
     }
-
-
     private Random random = new Random();
-
-    public int attack(int minimumDamage,int maximumDamage){
-        int damage = random.nextInt(minimumDamage,maximumDamage);
-        return damage;
-    }
 
     public int eviscerate(int minEviscerateDamage,int maxEviscerateDamage){
         int eviscerate = random.nextInt(minEviscerateDamage,maxEviscerateDamage);
         return eviscerate;
     }
-
-
 
     public int getMinimumDamage() {
 
@@ -56,14 +47,17 @@ public class Rogue extends Character{
     }
 
     public void setMinEviscerateDamage(int minEviscerateDamage) {
+
         this.minEviscerateDamage = minEviscerateDamage;
     }
 
     public int getMaxEviscerateDamage() {
+
         return maxEviscerateDamage;
     }
 
     public void setMaxEviscerateDamage(int maxEviscerateDamage) {
+
         this.maxEviscerateDamage = maxEviscerateDamage;
     }
 }
