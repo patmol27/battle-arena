@@ -17,18 +17,11 @@ public class Game {
             System.out.println("Choose a character. The characters are:\n1. Warrior\n2. Mage\n3. Rogue");
             String playerCharacter = scanner.nextLine();
 
-            if (playerCharacter.equals("Warrior")) {
-                Warrior warrior = new Warrior(playerName);
-                break;
-            } else if (playerCharacter.equals("Mage")) {
-                Mage mage = new Mage(playerName);
-                break;
-            } else if (playerCharacter.equals("Rogue")) {
-                Rogue rogue = new Rogue(playerName);
-                break;
-            } else {
+            if (!playerCharacter.equals("Warrior") & !playerCharacter.equals("Mage") & !playerCharacter.equals("Rogue")) {
                 System.out.println("You didn't enter a valid character! Try again.");
+                continue;
             }
+            Character chosenPlayerCharacter = pickCharacter(playerCharacter, playerName);
         }
     }
 
@@ -39,6 +32,20 @@ public class Game {
         characterList.add("Mage");
         characterList.add("Rogue");
 
+    }
+
+    public Character pickCharacter(String chosenCharacter, String chosenName) {
+        Character character = null;
+
+        if (chosenCharacter.equals("Warrior")) {
+            character = new Warrior(chosenName);
+        } else if (chosenCharacter.equals("Mage")) {
+            character = new Mage(chosenName);
+        } else if (chosenCharacter.equals("Rogue")) {
+            character = new Rogue(chosenName);
+        }
+
+        return character;
     }
 
 }
