@@ -22,6 +22,7 @@ public class Game {
                 continue;
             }
             Character chosenPlayerCharacter = pickCharacter(playerCharacter, playerName);
+            break;
         }
     }
 
@@ -32,6 +33,8 @@ public class Game {
         characterList.add("Mage");
         characterList.add("Rogue");
 
+        String computerCharacter = characterList.get(randomisedCharacterChoice);
+        Character chosenComputerCharacter = pickCharacter(computerCharacter, "Computer");
     }
 
     public Character pickCharacter(String chosenCharacter, String chosenName) {
