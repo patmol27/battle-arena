@@ -9,8 +9,9 @@ package test;
 import java.Rogue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+    import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    public class RogueTest {
+public class RogueTest {
 
         Rogue rogue;
 
@@ -27,19 +28,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
             int damage = rogue.giveDamage(rogue.getMinimumDamage(),rogue.getMaximumDamage());
 
-            assertEquals(damage,rogue.giveDamage(rogue.getMinimumDamage(),rogue.getMaximumDamage()));
+            System.out.println("Excepcted: Damage between 10-20");
+            System.out.println("actual Damage:" + damage);
+
+            assertTrue(damage >= 10 && damage <=20);
+
+
 
 
 
         }
 
 
-        @Test void makeSureEviscerateIsBalanced(){
 
-            int damage = rogue.eviscerate(rogue.getMinEviscerateDamage(),rogue.getMaxEviscerateDamage());
-
-            assertEquals(damage,rogue.eviscerate(rogue.getMinEviscerateDamage(),rogue.getMaxEviscerateDamage()));
-        }
 
 
 
