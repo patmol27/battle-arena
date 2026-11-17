@@ -21,7 +21,14 @@ public class Game {
                 System.out.println("You didn't enter a valid character! Try again.");
                 continue;
             }
-            Character chosenPlayerCharacter = pickCharacter(playerCharacter, playerName);
+            if (playerCharacter.equals("Warrior")) {
+                Warrior chosenPlayerCharacter = new Warrior(playerName);
+            } else if (playerCharacter.equals("Mage")) {
+                Mage chosenPlayerCharacter = new Mage(playerName);
+            } else if (playerCharacter.equals("Rogue")) {
+                Rogue chosenPlayerCharacter = new Rogue(playerName);
+            }
+            //Character chosenPlayerCharacter = pickCharacter(playerCharacter, playerName);
             break;
         }
     }
@@ -34,9 +41,17 @@ public class Game {
         characterList.add("Rogue");
 
         String computerCharacter = characterList.get(randomisedCharacterChoice);
-        Character chosenComputerCharacter = pickCharacter(computerCharacter, "Computer");
+        if (computerCharacter.equals("Warrior")) {
+            Warrior chosenComputerCharacter = new Warrior("Computer");
+        } else if (computerCharacter.equals("Mage")) {
+            Mage chosenComputerCharacter = new Mage("Computer");
+        } else if (computerCharacter.equals("Rogue")) {
+            Rogue chosenComputerCharacter = new Rogue("Computer");
+        }
+        //Character chosenComputerCharacter = pickCharacter(computerCharacter, "Computer");
     }
 
+    /*
     public Character pickCharacter(String chosenCharacter, String chosenName) {
         Character character = null;
 
@@ -50,5 +65,6 @@ public class Game {
 
         return character;
     }
+    */
 
 }
