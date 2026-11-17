@@ -21,6 +21,7 @@ public class CharacterStats {
         System.out.println("Weapon: Daggers | Damage: 10-20");
         System.out.println("Passive Ability: Critical Strike");
         System.out.println("Deals 40% critical damage");
+
         System.out.println();
     }
 }
