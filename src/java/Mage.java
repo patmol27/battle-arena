@@ -15,7 +15,8 @@ public class Mage extends Character {
         super(MAXIMUM_HP, name, MINIMUM_DAMAGE, MAXIMUM_DAMAGE);
     }
 
-    public int heal() {
+    @Override
+    public int specialAbility() {
         int healingAmount = random.nextInt(MINIMUM_HEAL, MAXIMUM_HEAL);
 
         int hp = getHp();

@@ -2,7 +2,7 @@ package java;
 
 import java.util.Random;
 
-public class Character {
+public class Character implements SpecialAbility {
 
     private int hp;
     private String name;
@@ -63,4 +63,7 @@ public class Character {
     public void setMaximumDamage(int maximumDamage) {
         this.maximumDamage = maximumDamage;
     }
+  
+    @Override
+    public abstract void specialAbility();
 }
