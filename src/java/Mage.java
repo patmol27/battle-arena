@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class Mage extends Character {
     private static final int MAXIMUM_HP = 90;
+    private static final int MINIMUM_HEAL = 10;
+    private static final int MAXIMUM_HEAL = 20;
 
     private int minimumDamage = 8;
     private int maximumDamage = 18;
-    private int minimumHeal = 10;
-    private int maximumHeal = 20;
 
     private Random random = new Random();
 
@@ -32,24 +32,8 @@ public class Mage extends Character {
         this.maximumDamage = maximumDamage;
     }
 
-    public int getMinimumHeal() {
-        return minimumHeal;
-    }
-
-    public void setMinimumHeal(int minimumHeal) {
-        this.minimumHeal = minimumHeal;
-    }
-
-    public int getMaximumHeal() {
-        return maximumHeal;
-    }
-
-    public void setMaximumHeal(int maximumHeal) {
-        this.maximumHeal = maximumHeal;
-    }
-
-    public int heal(int minimumHeal, int maximumHeal) {
-        int healingAmount = random.nextInt(minimumHeal, maximumHeal);
+    public int heal() {
+        int healingAmount = random.nextInt(MINIMUM_HEAL, MAXIMUM_HEAL);
 
         int hp = getHp();
         hp += healingAmount;
