@@ -10,33 +10,30 @@ public class Warrior extends Character {
     private boolean canUseShield = true;
 
     public Warrior(String name) {
-        super(MAXIMUM_HP, name);
+        super(MAXIMUM_HP, name, MINIMUM_DAMAGE, MAXIMUM_DAMAGE);
     }
 
-    public int giveDamage() {
+    public void useShield () {
+        if (canUseShield == true) {
+            shield = true;
+            canUseShield = false;
+        }
+    }
 
-        return giveDamage(MINIMUM_DAMAGE, MAXIMUM_DAMAGE + 1);
+    @Override
+    public int takeDamage (int damage) {
+        if (shield == true) {
+            shield = false;
+        } else {
+            super.takeDamage(damage);
+            canUseShield = true;
+        }
+
+        return getHp();
     }
 
     public int specialAbility() {
-
-        public void useShield () {
-            if (canUseShield == true) {
-                shield = true;
-                canUseShield = false;
-            }
-        }
-
-        @Override
-        public int takeDamage (int damage) {
-            if (shield == true) {
-                shield = false;
-            } else {
-                super.takeDamage(damage);
-                canUseShield = true;
-            }
-
-            return getHp();
-        }
+        useShield();
+        takeDamage();
     }
 }
