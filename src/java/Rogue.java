@@ -5,20 +5,23 @@ import java.util.Random;
 public class Rogue extends Character{
 
     private static final int MAXIMUM_HP = 95;
+    private static final int MINIMUM_DAMAGE = 10;
+    private static final int MAXIMUM_DAMAGE = 20;
+<<<<<<< Updated upstream
 
-    private int minimumDamage = 10;
-    private int maximumDamage = 20;
+=======
+>>>>>>> Stashed changes
 
 
     public Rogue(String name) {
 
-        super(MAXIMUM_HP, name);
+        super(MAXIMUM_HP, name,MINIMUM_DAMAGE,MAXIMUM_DAMAGE);
     }
     private Random random = new Random();
 
     @Override
     public int giveDamage(int minimumDamage,int maximumDamage){
-        int damage = random.nextInt(minimumDamage,maximumDamage);
+        int damage = random.nextInt(MINIMUM_DAMAGE,MAXIMUM_DAMAGE);
 
         if (random.nextInt(100) < 40){
              damage = damage *2;
@@ -27,25 +30,12 @@ public class Rogue extends Character{
         return damage;
     }
 
-    public int getMinimumDamage() {
 
-        return minimumDamage;
-    }
+<<<<<<< Updated upstream
+=======
 
-    public void setMinimumDamage(int minimumDamage) {
 
-        this.minimumDamage = minimumDamage;
-    }
-
-    public int getMaximumDamage() {
-
-        return maximumDamage;
-    }
-
-    public void setMaximumDamage(int maximumDamage) {
-
-        this.maximumDamage = maximumDamage;
-    }
+>>>>>>> Stashed changes
 
 
 }
