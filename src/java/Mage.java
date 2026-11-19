@@ -4,53 +4,20 @@ import java.util.Random;
 
 public class Mage extends Character {
     private static final int MAXIMUM_HP = 90;
-
-    private int minimumDamage = 8;
-    private int maximumDamage = 18;
-    private int minimumHeal = 10;
-    private int maximumHeal = 20;
+    private static final int MINIMUM_DAMAGE = 8;
+    private static final int MAXIMUM_DAMAGE = 18;
+    public static final int MINIMUM_HEAL = 10;
+    public static final int MAXIMUM_HEAL = 20;
 
     private Random random = new Random();
 
     public Mage(String name) {
-        super(MAXIMUM_HP, name);
-    }
-
-    public int getMinimumDamage() {
-        return minimumDamage;
-    }
-
-    public void setMinimumDamage(int minimumDamage) {
-        this.minimumDamage = minimumDamage;
-    }
-
-    public int getMaximumDamage() {
-        return maximumDamage;
-    }
-
-    public void setMaximumDamage(int maximumDamage) {
-        this.maximumDamage = maximumDamage;
-    }
-
-    public int getMinimumHeal() {
-        return minimumHeal;
-    }
-
-    public void setMinimumHeal(int minimumHeal) {
-        this.minimumHeal = minimumHeal;
-    }
-
-    public int getMaximumHeal() {
-        return maximumHeal;
-    }
-
-    public void setMaximumHeal(int maximumHeal) {
-        this.maximumHeal = maximumHeal;
+        super(MAXIMUM_HP, name, MINIMUM_DAMAGE, MAXIMUM_DAMAGE);
     }
 
     @Override
-    public int specialAbility(int minimumHeal, int maximumHeal) {
-        int healingAmount = random.nextInt(minimumHeal, maximumHeal);
+    public int specialAbility() {
+        int healingAmount = random.nextInt(MINIMUM_HEAL, MAXIMUM_HEAL);
 
         int hp = getHp();
         hp += healingAmount;

@@ -6,11 +6,15 @@ public class Character implements SpecialAbility {
 
     private int hp;
     private String name;
+    private int minimumDamage;
+    private int maximumDamage;
 
 
-    public Character(int hp, String name ) {
+    public Character(int hp, String name, int minimumDamage, int maximumDamage ) {
         this.hp = hp;
         this.name = name;
+        this.minimumDamage = minimumDamage;
+        this.maximumDamage = maximumDamage;
 
     }
 
@@ -26,6 +30,7 @@ public class Character implements SpecialAbility {
         return hp;
     }
     public int getHp() {
+
         return hp;
     }
 
@@ -34,13 +39,31 @@ public class Character implements SpecialAbility {
     }
 
     public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
+    public int getMinimumDamage() {
+        return minimumDamage;
+    }
+
+    public void setMinimumDamage(int minimumDamage) {
+        this.minimumDamage = minimumDamage;
+    }
+
+    public int getMaximumDamage() {
+        return maximumDamage;
+    }
+
+    public void setMaximumDamage(int maximumDamage) {
+        this.maximumDamage = maximumDamage;
+    }
+  
     @Override
     public abstract void specialAbility();
 }
