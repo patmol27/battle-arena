@@ -7,10 +7,7 @@ public class Rogue extends Character{
     private static final int MAXIMUM_HP = 95;
     private static final int MINIMUM_DAMAGE = 10;
     private static final int MAXIMUM_DAMAGE = 20;
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 
 
     public Rogue(String name) {
@@ -18,24 +15,22 @@ public class Rogue extends Character{
         super(MAXIMUM_HP, name,MINIMUM_DAMAGE,MAXIMUM_DAMAGE);
     }
     private Random random = new Random();
+    
 
     @Override
-    public int giveDamage(int minimumDamage,int maximumDamage){
-        int damage = random.nextInt(MINIMUM_DAMAGE,MAXIMUM_DAMAGE);
+    public int specialAbility() {
+        int damage = giveDamage(MINIMUM_DAMAGE,MAXIMUM_DAMAGE);
 
-        if (random.nextInt(100) < 40){
-             damage = damage *2;
-            System.out.println("Critical Strike");
+        if (random.nextInt(100) < 80) {
+            damage = damage *2;
+
+            System.out.println("Critical Strike!");
+        }else {
+            System.out.println("abillity missed");
         }
         return damage;
+
     }
-
-
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
 
 
 }
