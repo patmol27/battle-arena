@@ -4,8 +4,8 @@ public class Warrior extends Character {
 
     private static final int MAXIMUM_HP = 120;
 
-    private int MINIMUM_DAMAGE = 9;
-    private int MAXIMUM_DAMAGE = 19;
+    private static final int MINIMUM_DAMAGE = 9;
+    private static final int MAXIMUM_DAMAGE = 19;
     private boolean shield = false;
     private boolean canUseShield = true;
 
