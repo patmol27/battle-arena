@@ -4,32 +4,15 @@ import java.util.Random;
 
 public class Mage extends Character {
     private static final int MAXIMUM_HP = 90;
+    private static final int MINIMUM_DAMAGE = 8;
+    private static final int MAXIMUM_DAMAGE = 18;
     public static final int MINIMUM_HEAL = 10;
     public static final int MAXIMUM_HEAL = 20;
-
-    private int minimumDamage = 8;
-    private int maximumDamage = 18;
 
     private Random random = new Random();
 
     public Mage(String name) {
-        super(MAXIMUM_HP, name);
-    }
-
-    public int getMinimumDamage() {
-        return minimumDamage;
-    }
-
-    public void setMinimumDamage(int minimumDamage) {
-        this.minimumDamage = minimumDamage;
-    }
-
-    public int getMaximumDamage() {
-        return maximumDamage;
-    }
-
-    public void setMaximumDamage(int maximumDamage) {
-        this.maximumDamage = maximumDamage;
+        super(MAXIMUM_HP, name, MINIMUM_DAMAGE, MAXIMUM_DAMAGE);
     }
 
     public int heal() {
