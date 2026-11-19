@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Mage extends Character {
     private static final int MAXIMUM_HP = 90;
-    private static final int MINIMUM_HEAL = 10;
-    private static final int MAXIMUM_HEAL = 20;
+    public static final int MINIMUM_HEAL = 10;
+    public static final int MAXIMUM_HEAL = 20;
 
     private int minimumDamage = 8;
     private int maximumDamage = 18;
