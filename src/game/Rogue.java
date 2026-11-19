@@ -1,4 +1,4 @@
-package java;
+package game;
 
 import java.util.Random;
 
@@ -34,3 +34,5 @@ public class Rogue extends Character{
 
 
 }
+
+

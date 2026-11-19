@@ -1,3 +1,5 @@
+package game;
+
 public class CharacterStats {
 
     public void showStats() {

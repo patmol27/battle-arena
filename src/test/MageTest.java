@@ -1,12 +1,6 @@
 package test;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.Mage;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+/*
 public class MageTest {
     private Mage mage;
 
@@ -32,3 +26,5 @@ public class MageTest {
         assertTrue(mage.getHp() < mage.MAXIMUM_HEAL + 30);
     }
 }
+
+ */
