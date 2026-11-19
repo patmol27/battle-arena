@@ -2,7 +2,7 @@ package java;
 
 import java.util.Random;
 
-public class Character implements SpecialAbility {
+public abstract class Character implements SpecialAbility {
 
     private int hp;
     private String name;
@@ -65,5 +65,5 @@ public class Character implements SpecialAbility {
     }
   
     @Override
-    public abstract void specialAbility();
+    public abstract int specialAbility();
 }
