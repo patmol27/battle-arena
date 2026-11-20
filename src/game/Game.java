@@ -1,9 +1,6 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     private Scanner scanner = new Scanner(System.in);
@@ -61,7 +58,7 @@ public class Game {
         Character playerCharacter = setUpPlayerCharacter();
         Character computerCharacter = setUpComputerCharacter();
 
-        System.out.println("Your character: " + playerCharacter.getCharacterType());
+        System.out.println("Your character: " + playerCharacter.getCharacterType().toString().toLowerCase());
     }
 
 }
