@@ -75,16 +75,23 @@ public class Game {
 
         if (chosenPlayerAction.equals("1")) {
             int damageByPlayer = playerCharacter.giveDamage();
-            System.out.println(playerCharacter.getName() + " deals " + damageByPlayer + " damage!");
+            System.out.println(playerCharacter.getName() + " (" +
+                    playerCharacter.getCharacterType().toString().toLowerCase() +
+                    ") deals " + damageByPlayer + " damage!");
             int computerHp = computerCharacter.takeDamage(damageByPlayer);
-            System.out.println(computerCharacter.getName() + " is currently at " + computerHp + " HP.");
+            System.out.println(computerCharacter.getName() + " (" +
+                    computerCharacter.getCharacterType().toString().toLowerCase() +
+                    ") is currently at " + computerHp + " HP.");
         } else if (chosenPlayerAction.equals("2")) {
             int specialAbilityResult = playerCharacter.specialAbility();
             if (playerCharacter.getCharacterType().equals(AlternateCharacter.MAGE)) {
                 int playerHealingAmount = specialAbilityResult;
-                System.out.println(playerCharacter.getName() + " heals for " + playerHealingAmount + " HP!");
-                System.out.println(playerCharacter.getName() + " is currently at " + playerCharacter.getHp() +
-                        " HP.");
+                System.out.println(playerCharacter.getName() + " (" +
+                        playerCharacter.getCharacterType().toString().toLowerCase() +
+                        ") heals for " + playerHealingAmount + " HP!");
+                System.out.println(playerCharacter.getName() + " (" +
+                        playerCharacter.getCharacterType().toString().toLowerCase() +
+                        ") is currently at " + playerCharacter.getHp() + " HP.");
             }
         }
     }
