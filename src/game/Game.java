@@ -78,6 +78,14 @@ public class Game {
             System.out.println(playerCharacter.getName() + " deals " + damageByPlayer + " damage!");
             int computerHp = computerCharacter.takeDamage(damageByPlayer);
             System.out.println(computerCharacter.getName() + " is currently at " + computerHp + " HP.");
+        } else if (chosenPlayerAction.equals("2")) {
+            int specialAbilityResult = playerCharacter.specialAbility();
+            if (playerCharacter.getCharacterType().equals(AlternateCharacter.MAGE)) {
+                int playerHealingAmount = specialAbilityResult;
+                System.out.println(playerCharacter.getName() + " heals for " + playerHealingAmount + " HP!");
+                System.out.println(playerCharacter.getName() + " is currently at " + playerCharacter.getHp() +
+                        " HP.");
+            }
         }
     }
 
