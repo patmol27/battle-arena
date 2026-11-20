@@ -26,7 +26,7 @@ public class RogueTest {
         @DisplayName("make sure damage is between 10-20")
         @Test void makeSureRogueDamageIsBalanced(){
 
-            int damage = rogue.giveDamage(rogue.getMinimumDamage(),rogue.getMaximumDamage());
+            int damage = rogue.giveDamage();
 
             System.out.println("Excepcted: Damage between 10-20");
             System.out.println("actual Damage:" + damage);

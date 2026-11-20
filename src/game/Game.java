@@ -73,8 +73,9 @@ public class Game {
                 "(3. Character information)");
         String chosenPlayerAction = scanner.nextLine();
 
-        if chosenPlayerAction.equals("1") {
+        if (chosenPlayerAction.equals("1")) {
             int damageByPlayer = playerCharacter.giveDamage();
+            System.out.println(damageByPlayer);
         }
     }
 

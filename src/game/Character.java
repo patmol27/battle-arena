@@ -20,7 +20,7 @@ public abstract class Character implements SpecialAbility {
 
     Random random = new Random();
 
-    public int giveDamage(int minimumDamage, int maximumDamage){
+    public int giveDamage(){
         int damage = random.nextInt(minimumDamage,maximumDamage);
         return damage;
     }

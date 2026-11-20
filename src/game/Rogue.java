@@ -19,7 +19,7 @@ public class Rogue extends Character{
 
     @Override
     public int specialAbility() {
-        int damage = giveDamage(MINIMUM_DAMAGE,MAXIMUM_DAMAGE);
+        int damage = giveDamage();
 
         if (random.nextInt(100) < 80) {
             damage = damage *2;
