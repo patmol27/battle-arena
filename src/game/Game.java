@@ -16,11 +16,11 @@ public class Game {
             System.out.println("Choose a character. The characters are:\n1. Warrior\n2. Mage\n3. Rogue");
             String playerCharacter = scanner.nextLine();
 
-            if (!playerCharacter.equalsIgnoreCase("Warrior") &
-                    !playerCharacter.equalsIgnoreCase("Mage") &
-                    !playerCharacter.equalsIgnoreCase("Rogue") &
-                    !playerCharacter.equals("1") & !playerCharacter.equals("2") &
-                    !playerCharacter.equals("3")) {
+            if (!playerCharacter.trim().equalsIgnoreCase("Warrior") &
+                    !playerCharacter.trim().equalsIgnoreCase("Mage") &
+                    !playerCharacter.trim().equalsIgnoreCase("Rogue") &
+                    !playerCharacter.trim().equals("1") & !playerCharacter.trim().equals("2") &
+                    !playerCharacter.trim().equals("3")) {
                 System.out.println("You didn't enter a valid character! Try again.");
                 continue;
             }
@@ -47,11 +47,14 @@ public class Game {
     public Character pickCharacter(String chosenCharacter, String chosenName) {
         Character character = null;
 
-        if (chosenCharacter.equalsIgnoreCase("Warrior") || chosenCharacter.equals("1")) {
+        if (chosenCharacter.trim().equalsIgnoreCase("Warrior") ||
+                chosenCharacter.equals("1")) {
             character = new Warrior(chosenName);
-        } else if (chosenCharacter.equalsIgnoreCase("Mage") || chosenCharacter.equals("2")) {
+        } else if (chosenCharacter.trim().equalsIgnoreCase("Mage") ||
+                chosenCharacter.equals("2")) {
             character = new Mage(chosenName);
-        } else if (chosenCharacter.equalsIgnoreCase("Rogue") || chosenCharacter.equals("3")) {
+        } else if (chosenCharacter.trim().equalsIgnoreCase("Rogue") ||
+                chosenCharacter.equals("3")) {
             character = new Rogue(chosenName);
         }
 
