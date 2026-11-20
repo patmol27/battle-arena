@@ -65,7 +65,13 @@ public class Game {
         Character playerCharacter = setUpPlayerCharacter();
         Character computerCharacter = setUpComputerCharacter();
 
-        System.out.println("Your character: " + playerCharacter.getCharacterType().toString().toLowerCase());
+        System.out.println("Your character: " + playerCharacter.getCharacterType().toString().toLowerCase() +
+                "\nThe computer's character: " +
+                computerCharacter.getCharacterType().toString().toLowerCase() + "\nLet's begin the battle!");
+
+        System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
+                "(3. Character information)");
+        String chosenPlayerAction = scanner.nextLine();
     }
 
 }
