@@ -75,7 +75,9 @@ public class Game {
 
         if (chosenPlayerAction.equals("1")) {
             int damageByPlayer = playerCharacter.giveDamage();
-            System.out.println(damageByPlayer);
+            System.out.println(playerCharacter.getName() + " deals " + damageByPlayer + " damage!");
+            int computerHp = computerCharacter.takeDamage(damageByPlayer);
+            System.out.println(computerCharacter.getName() + " is currently at " + computerHp + " HP.");
         }
     }
 
