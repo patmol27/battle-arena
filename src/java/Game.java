@@ -57,4 +57,11 @@ public class Game {
         return character;
     }
 
+    public void match() {
+        Character playerCharacter = setUpPlayerCharacter();
+        Character computerCharacter = setUpComputerCharacter();
+
+        System.out.println("Your character: " + playerCharacter.getCharacterType());
+    }
+
 }
