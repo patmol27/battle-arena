@@ -9,9 +9,11 @@ public class Game {
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
 
-    public void setUpPlayerCharacter() {
+    public Character setUpPlayerCharacter() {
         System.out.println("Enter your name.");
         String playerName = scanner.nextLine();
+
+        Character chosenPlayerCharacter;
 
         while (true) {
             System.out.println("Choose a character. The characters are:\n1. Warrior\n2. Mage\n3. Rogue");
@@ -21,12 +23,14 @@ public class Game {
                 System.out.println("You didn't enter a valid character! Try again.");
                 continue;
             }
-            Character chosenPlayerCharacter = pickCharacter(playerCharacter, playerName);
+            chosenPlayerCharacter = pickCharacter(playerCharacter, playerName);
             break;
         }
+
+        return chosenPlayerCharacter;
     }
 
-    public void setUpComputerCharacter() {
+    public Character setUpComputerCharacter() {
         int randomisedCharacterChoice = random.nextInt(3);
         List<String> characterList = new ArrayList<>();
         characterList.add("Warrior");
@@ -35,6 +39,8 @@ public class Game {
 
         String computerCharacter = characterList.get(randomisedCharacterChoice);
         Character chosenComputerCharacter = pickCharacter(computerCharacter, "Computer");
+
+        return chosenComputerCharacter;
     }
 
     public Character pickCharacter(String chosenCharacter, String chosenName) {
