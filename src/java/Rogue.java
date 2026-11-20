@@ -32,5 +32,10 @@ public class Rogue extends Character{
 
     }
 
+    @Override
+    public AlternateCharacter getCharacterType() {
+        return AlternateCharacter.ROGUE;
+    }
+
 
 }

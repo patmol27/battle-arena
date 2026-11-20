@@ -66,4 +66,7 @@ public abstract class Character implements SpecialAbility {
   
     @Override
     public abstract int specialAbility();
+
+    @Override
+    public abstract AlternateCharacter getCharacterType();
 }

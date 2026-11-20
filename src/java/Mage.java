@@ -28,4 +28,9 @@ public class Mage extends Character {
 
         return healingAmount;
     }
+
+    @Override
+    public AlternateCharacter getCharacterType() {
+        return AlternateCharacter.MAGE;
+    }
 }

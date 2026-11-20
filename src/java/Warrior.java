@@ -36,4 +36,9 @@ public class Warrior extends Character {
         useShield();
         takeDamage();
     }
+
+    @Override
+    public AlternateCharacter getCharacterType() {
+        return AlternateCharacter.WARRIOR;
+    }
 }
