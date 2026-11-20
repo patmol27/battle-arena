@@ -3,7 +3,7 @@ package test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.Mage;
+import game.Mage;
 
 import static org.junit.jupiter.api.Assertions.*;
 

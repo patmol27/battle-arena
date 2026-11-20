@@ -1,4 +1,4 @@
-package java;
+package game;
 
 public enum AlternateCharacter {
     WARRIOR,

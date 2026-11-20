@@ -1,7 +1,7 @@
 package test;
 
 import org.junit.jupiter.api.Test;
-import java.Warrior;
+import game.Warrior;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WarriorTest {
