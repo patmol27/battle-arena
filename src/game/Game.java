@@ -72,6 +72,10 @@ public class Game {
         System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
                 "(3. Character information)");
         String chosenPlayerAction = scanner.nextLine();
+
+        if chosenPlayerAction.equals("1") {
+            int damageByPlayer = playerCharacter.giveDamage();
+        }
     }
 
 }
