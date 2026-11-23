@@ -81,6 +81,10 @@ public class Game {
                 System.out.println("You didn't pick a valid action! Try again.");
             }
         }
+
+        String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
+        System.out.println("Computer's turn!");
+        act(randomisedComputerAction, computerCharacter, playerCharacter);
     }
 
     public void act(String chosenAction, Character attackingCharacter, Character defendingCharacter) {
