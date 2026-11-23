@@ -83,6 +83,7 @@ public class Game {
             System.out.println(computerCharacter.getName() + " (" +
                     computerCharacter.getCharacterType().toString().toLowerCase() +
                     ") is currently at " + computerHp + " HP.");
+            computerCharacter.setHp(computerHp);
 
         } else if (chosenPlayerAction.equals("2")) {
             int specialAbilityResult = playerCharacter.specialAbility();
@@ -113,6 +114,7 @@ public class Game {
                 System.out.println(computerCharacter.getName() + " (" +
                         computerCharacter.getCharacterType().toString().toLowerCase() +
                         ") is currently at " + computerHp + " HP.");
+                computerCharacter.setHp(computerHp);
             }
         }
     }
