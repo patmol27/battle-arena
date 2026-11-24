@@ -70,21 +70,23 @@ public class Game {
                 computerCharacter.getCharacterType().toString().toLowerCase() + "\nLet's begin the battle!");
 
         while (true) {
-            System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
-                    "(3. Character information)");
-            String chosenPlayerAction = scanner.nextLine();
-            
-            if (chosenPlayerAction.equals("1") || chosenPlayerAction.equals("2")) {
-                act(chosenPlayerAction, playerCharacter, computerCharacter);
-                break;
-            } else {
-                System.out.println("You didn't pick a valid action! Try again.");
-            }
-        }
+            while (true) {
+                System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
+                        "(3. Character information)");
+                String chosenPlayerAction = scanner.nextLine();
 
-        String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
-        System.out.println("Computer's turn!");
-        act(randomisedComputerAction, computerCharacter, playerCharacter);
+                if (chosenPlayerAction.equals("1") || chosenPlayerAction.equals("2")) {
+                    act(chosenPlayerAction, playerCharacter, computerCharacter);
+                    break;
+                } else {
+                    System.out.println("You didn't pick a valid action! Try again.");
+                }
+            }
+
+            String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
+            System.out.println("Computer's turn!");
+            act(randomisedComputerAction, computerCharacter, playerCharacter);
+        }
     }
 
     public void act(String chosenAction, Character attackingCharacter, Character defendingCharacter) {
