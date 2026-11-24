@@ -6,6 +6,7 @@ public class Game {
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
     //private int cooldown = 0;
+    private boolean gameEnd = false;
 
     public Character setUpPlayerCharacter() {
         System.out.println("Enter your name.");
@@ -86,24 +87,12 @@ public class Game {
                 computerCharacter.getCharacterType().toString().toLowerCase() + "\nLet's begin the battle!");
 
         while (true) {
-            if(playerCharacter.getHp() <= 0){
-                System.out.println("Game is over! " + computerCharacter.getName() + " have won with " + computerCharacter.getHp() + " remaining");
-                break;
-
-            }else if(computerCharacter.getHp() <= 0){
-                System.out.println("Game is over! " + playerCharacter.getName() + " have won with " + playerCharacter.getHp()+ " remaining");
+            act("1", playerCharacter, computerCharacter);
+            if (gameEnd) {
                 break;
             }
 
             while (true) {
-
-                act("1", playerCharacter, computerCharacter);
-
-                if (gameOver(playerCharacter,computerCharacter)){
-                    break;
-                }
-
-
                 System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
                         "(3. Character information)");
                 String chosenPlayerAction = scanner.nextLine();
@@ -114,13 +103,18 @@ public class Game {
                 } else {
                     System.out.println("You didn't pick a valid action! Try again.");
                 }
-
+            }
+            if (gameEnd) {
+                break;
             }
 
             if (gameOver(playerCharacter,computerCharacter)){
                 break;
             }
             act("1", computerCharacter, playerCharacter);
+            if (gameEnd) {
+                break;
+            }
 
 
             String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
@@ -129,6 +123,12 @@ public class Game {
 
         }
 
+        if (playerCharacter.getHp() == 0) {
+            System.out.println("Game is over! " + computerCharacter.getName() + " have won with " + computerCharacter.getHp() + " remaining");
+
+        } else if (computerCharacter.getHp() == 0) {
+            System.out.println("Game is over! " + playerCharacter.getName() + " have won with " + playerCharacter.getHp() + " remaining");
+        }
     }
 
     public void act(String chosenAction, Character attackingCharacter, Character defendingCharacter) {
@@ -146,39 +146,46 @@ public class Game {
 
         } else if (chosenAction.equals("2")) {
             //if (cooldown == 0) {
-                //cooldown = 2;
+            //cooldown = 2;
 
-                int specialAbilityResult = attackingCharacter.specialAbility();
-                if (attackingCharacter.getCharacterType().equals(AlternateCharacter.WARRIOR)) {
-                    System.out.println(attackingCharacter.getName() + " (" +
-                            attackingCharacter.getCharacterType().toString().toLowerCase() +
-                            ") uses shield!");
+            int specialAbilityResult = attackingCharacter.specialAbility();
+            if (attackingCharacter.getCharacterType().equals(AlternateCharacter.WARRIOR)) {
+                System.out.println(attackingCharacter.getName() + " (" +
+                        attackingCharacter.getCharacterType().toString().toLowerCase() +
+                        ") uses shield!");
 
-                } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.MAGE)) {
-                    int playerHealingAmount = specialAbilityResult;
-                    System.out.println(attackingCharacter.getName() + " (" +
-                            attackingCharacter.getCharacterType().toString().toLowerCase() +
-                            ") heals for " + playerHealingAmount + " HP!");
-                    System.out.println(attackingCharacter.getName() + " (" +
-                            attackingCharacter.getCharacterType().toString().toLowerCase() +
-                            ") is currently at " + attackingCharacter.getHp() + " HP.");
+            } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.MAGE)) {
+                int playerHealingAmount = specialAbilityResult;
+                System.out.println(attackingCharacter.getName() + " (" +
+                        attackingCharacter.getCharacterType().toString().toLowerCase() +
+                        ") heals for " + playerHealingAmount + " HP!");
+                System.out.println(attackingCharacter.getName() + " (" +
+                        attackingCharacter.getCharacterType().toString().toLowerCase() +
+                        ") is currently at " + attackingCharacter.getHp() + " HP.");
 
-                } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.ROGUE)) {
-                    int specialAbilityDamage = specialAbilityResult;
-                    System.out.println(attackingCharacter.getName() + " (" +
-                            attackingCharacter.getCharacterType().toString().toLowerCase() +
-                            ") deals " + specialAbilityDamage + " damage.");
+            } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.ROGUE)) {
+                int specialAbilityDamage = specialAbilityResult;
+                System.out.println(attackingCharacter.getName() + " (" +
+                        attackingCharacter.getCharacterType().toString().toLowerCase() +
+                        ") uses special ability!");
+                System.out.println(attackingCharacter.getName() + " (" +
+                        attackingCharacter.getCharacterType().toString().toLowerCase() +
+                        ") deals " + specialAbilityDamage + " damage.");
 
-                    int computerHp = defendingCharacter.takeDamage(specialAbilityDamage);
-                    System.out.println(defendingCharacter.getName() + " (" +
-                            defendingCharacter.getCharacterType().toString().toLowerCase() +
-                            ") is currently at " + computerHp + " HP.");
-                    defendingCharacter.setHp(computerHp);
-                }
-            //} else {
-                //cooldown--;
-            //}
+                int computerHp = defendingCharacter.takeDamage(specialAbilityDamage);
+                System.out.println(defendingCharacter.getName() + " (" +
+                        defendingCharacter.getCharacterType().toString().toLowerCase() +
+                        ") is currently at " + computerHp + " HP.");
+                defendingCharacter.setHp(computerHp);
+            }
         }
 
+        if (defendingCharacter.getHp() == 0) {
+            gameEnd = true;
+        }
+        //} else {
+        //cooldown--;
+        //}
     }
+
 }
