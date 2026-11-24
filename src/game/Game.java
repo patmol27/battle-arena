@@ -5,6 +5,7 @@ import java.util.*;
 public class Game {
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
+    //private int cooldown = 0;
 
     public Character setUpPlayerCharacter() {
         System.out.println("Enter your name.");
@@ -71,6 +72,8 @@ public class Game {
 
         while (true) {
             while (true) {
+                act("1", playerCharacter, computerCharacter);
+
                 System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
                         "(3. Character information)");
                 String chosenPlayerAction = scanner.nextLine();
@@ -82,6 +85,8 @@ public class Game {
                     System.out.println("You didn't pick a valid action! Try again.");
                 }
             }
+
+            act("1", computerCharacter, playerCharacter);
 
             String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
             System.out.println("Computer's turn!");
@@ -103,36 +108,42 @@ public class Game {
             defendingCharacter.setHp(computerHp);
 
         } else if (chosenAction.equals("2")) {
-            int specialAbilityResult = attackingCharacter.specialAbility();
-            if (attackingCharacter.getCharacterType().equals(AlternateCharacter.WARRIOR)) {
-                System.out.println(attackingCharacter.getName() + " (" +
-                        attackingCharacter.getCharacterType().toString().toLowerCase() +
-                        ") uses shield!");
+            //if (cooldown == 0) {
+                //cooldown = 2;
 
-            } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.MAGE)) {
-                int playerHealingAmount = specialAbilityResult;
-                System.out.println(attackingCharacter.getName() + " (" +
-                        attackingCharacter.getCharacterType().toString().toLowerCase() +
-                        ") heals for " + playerHealingAmount + " HP!");
-                System.out.println(attackingCharacter.getName() + " (" +
-                        attackingCharacter.getCharacterType().toString().toLowerCase() +
-                        ") is currently at " + attackingCharacter.getHp() + " HP.");
+                int specialAbilityResult = attackingCharacter.specialAbility();
+                if (attackingCharacter.getCharacterType().equals(AlternateCharacter.WARRIOR)) {
+                    System.out.println(attackingCharacter.getName() + " (" +
+                            attackingCharacter.getCharacterType().toString().toLowerCase() +
+                            ") uses shield!");
 
-            } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.ROGUE)) {
-                int specialAbilityDamage = specialAbilityResult;
-                System.out.println(attackingCharacter.getName() + " (" +
-                        attackingCharacter.getCharacterType().toString().toLowerCase() +
-                        ") uses special ability!");
-                System.out.println(attackingCharacter.getName() + " (" +
-                        attackingCharacter.getCharacterType().toString().toLowerCase() +
-                        ") deals " + specialAbilityDamage + " damage.");
+                } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.MAGE)) {
+                    int playerHealingAmount = specialAbilityResult;
+                    System.out.println(attackingCharacter.getName() + " (" +
+                            attackingCharacter.getCharacterType().toString().toLowerCase() +
+                            ") heals for " + playerHealingAmount + " HP!");
+                    System.out.println(attackingCharacter.getName() + " (" +
+                            attackingCharacter.getCharacterType().toString().toLowerCase() +
+                            ") is currently at " + attackingCharacter.getHp() + " HP.");
 
-                int computerHp = defendingCharacter.takeDamage(specialAbilityDamage);
-                System.out.println(defendingCharacter.getName() + " (" +
-                        defendingCharacter.getCharacterType().toString().toLowerCase() +
-                        ") is currently at " + computerHp + " HP.");
-                defendingCharacter.setHp(computerHp);
-            }
+                } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.ROGUE)) {
+                    int specialAbilityDamage = specialAbilityResult;
+                    System.out.println(attackingCharacter.getName() + " (" +
+                            attackingCharacter.getCharacterType().toString().toLowerCase() +
+                            ") uses special ability!");
+                    System.out.println(attackingCharacter.getName() + " (" +
+                            attackingCharacter.getCharacterType().toString().toLowerCase() +
+                            ") deals " + specialAbilityDamage + " damage.");
+
+                    int computerHp = defendingCharacter.takeDamage(specialAbilityDamage);
+                    System.out.println(defendingCharacter.getName() + " (" +
+                            defendingCharacter.getCharacterType().toString().toLowerCase() +
+                            ") is currently at " + computerHp + " HP.");
+                    defendingCharacter.setHp(computerHp);
+                }
+            //} else {
+                //cooldown--;
+            //}
         }
     }
 }
