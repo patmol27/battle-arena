@@ -63,6 +63,21 @@ public class Game {
         return character;
     }
 
+    public boolean gameOver(Character player, Character computer){
+        if (player.getHp() <= 0) {
+            System.out.println("Game is over! " + computer.getName() +
+                    " have won with " + computer.getHp() + " remaining");
+            return true;
+
+        } else if (computer.getHp() <= 0) {
+            System.out.println("Game is over! " + player.getName() +
+                    " have won with " + player.getHp() + " remaining");
+            return true;
+        }
+
+        return false;
+    }
+
     public void match() {
         Character playerCharacter = setUpPlayerCharacter();
         Character computerCharacter = setUpComputerCharacter();
@@ -93,14 +108,19 @@ public class Game {
                 break;
             }
 
+            if (gameOver(playerCharacter,computerCharacter)){
+                break;
+            }
             act("1", computerCharacter, playerCharacter);
             if (gameEnd) {
                 break;
             }
 
+
             String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
             System.out.println("Computer's turn!");
             act(randomisedComputerAction, computerCharacter, playerCharacter);
+
         }
 
         if (playerCharacter.getHp() == 0) {
