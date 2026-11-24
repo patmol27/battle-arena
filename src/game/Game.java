@@ -71,7 +71,16 @@ public class Game {
                 computerCharacter.getCharacterType().toString().toLowerCase() + "\nLet's begin the battle!");
 
         while (true) {
+            if(playerCharacter.getHp() == 0){
+                System.out.println("Game is over! " + computerCharacter.getName() + " have won with " + computerCharacter.getHp() + " remaining");
+                break;
+
+            }else if(computerCharacter.getHp() == 0){
+                System.out.println("Game is over! " + playerCharacter.getName() + " have won with " + playerCharacter.getHp()+ " remaining");
+                break;
+            }
             while (true) {
+
                 act("1", playerCharacter, computerCharacter);
 
                 System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
@@ -84,6 +93,7 @@ public class Game {
                 } else {
                     System.out.println("You didn't pick a valid action! Try again.");
                 }
+
             }
 
             act("1", computerCharacter, playerCharacter);
