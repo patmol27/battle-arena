@@ -27,6 +27,9 @@ public abstract class Character implements SpecialAbility {
 
     public int takeDamage(int damage){
         hp = hp -(damage);
+        if (hp < 0){
+            hp = 0;
+        }
         return hp;
     }
     public int getHp() {
