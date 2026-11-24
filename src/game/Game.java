@@ -62,6 +62,21 @@ public class Game {
         return character;
     }
 
+    public boolean gameOver(Character player, Character computer){
+        if (player.getHp() <= 0) {
+            System.out.println("Game is over! " + computer.getName() +
+                    " have won with " + computer.getHp() + " remaining");
+            return true;
+
+        } else if (computer.getHp() <= 0) {
+            System.out.println("Game is over! " + player.getName() +
+                    " have won with " + player.getHp() + " remaining");
+            return true;
+        }
+
+        return false;
+    }
+
     public void match() {
         Character playerCharacter = setUpPlayerCharacter();
         Character computerCharacter = setUpComputerCharacter();
@@ -71,17 +86,23 @@ public class Game {
                 computerCharacter.getCharacterType().toString().toLowerCase() + "\nLet's begin the battle!");
 
         while (true) {
-            if(playerCharacter.getHp() == 0){
+            if(playerCharacter.getHp() <= 0){
                 System.out.println("Game is over! " + computerCharacter.getName() + " have won with " + computerCharacter.getHp() + " remaining");
                 break;
 
-            }else if(computerCharacter.getHp() == 0){
+            }else if(computerCharacter.getHp() <= 0){
                 System.out.println("Game is over! " + playerCharacter.getName() + " have won with " + playerCharacter.getHp()+ " remaining");
                 break;
             }
+
             while (true) {
 
                 act("1", playerCharacter, computerCharacter);
+
+                if (gameOver(playerCharacter,computerCharacter)){
+                    break;
+                }
+
 
                 System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
                         "(3. Character information)");
@@ -96,12 +117,18 @@ public class Game {
 
             }
 
+            if (gameOver(playerCharacter,computerCharacter)){
+                break;
+            }
             act("1", computerCharacter, playerCharacter);
+
 
             String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
             System.out.println("Computer's turn!");
             act(randomisedComputerAction, computerCharacter, playerCharacter);
+
         }
+
     }
 
     public void act(String chosenAction, Character attackingCharacter, Character defendingCharacter) {
@@ -140,9 +167,6 @@ public class Game {
                     int specialAbilityDamage = specialAbilityResult;
                     System.out.println(attackingCharacter.getName() + " (" +
                             attackingCharacter.getCharacterType().toString().toLowerCase() +
-                            ") uses special ability!");
-                    System.out.println(attackingCharacter.getName() + " (" +
-                            attackingCharacter.getCharacterType().toString().toLowerCase() +
                             ") deals " + specialAbilityDamage + " damage.");
 
                     int computerHp = defendingCharacter.takeDamage(specialAbilityDamage);
@@ -155,5 +179,6 @@ public class Game {
                 //cooldown--;
             //}
         }
+
     }
 }
