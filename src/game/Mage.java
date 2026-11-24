@@ -1,4 +1,4 @@
-package java;
+package game;
 
 import java.util.Random;
 
@@ -27,5 +27,10 @@ public class Mage extends Character {
         setHp(hp);
 
         return healingAmount;
+    }
+
+    @Override
+    public AlternateCharacter getCharacterType() {
+        return AlternateCharacter.MAGE;
     }
 }

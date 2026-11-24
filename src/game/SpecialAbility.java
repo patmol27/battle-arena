@@ -1,5 +1,7 @@
-package java;
+package game;
 
 public interface SpecialAbility {
     int specialAbility();
+
+    AlternateCharacter getCharacterType();
 }

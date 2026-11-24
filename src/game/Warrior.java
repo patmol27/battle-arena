@@ -1,4 +1,4 @@
-package java;
+package game;
 
 public class Warrior extends Character {
 
@@ -34,6 +34,12 @@ public class Warrior extends Character {
 
     public int specialAbility() {
         useShield();
-        takeDamage();
+        //takeDamage();
+        return 0;
+    }
+
+    @Override
+    public AlternateCharacter getCharacterType() {
+        return AlternateCharacter.WARRIOR;
     }
 }

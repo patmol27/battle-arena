@@ -1,4 +1,4 @@
-package java;
+package game;
 
 import java.util.Random;
 
@@ -19,7 +19,7 @@ public class Rogue extends Character{
 
     @Override
     public int specialAbility() {
-        int damage = giveDamage(MINIMUM_DAMAGE,MAXIMUM_DAMAGE);
+        int damage = giveDamage();
 
         if (random.nextInt(100) < 80) {
             damage = damage *2;
@@ -30,6 +30,11 @@ public class Rogue extends Character{
         }
         return damage;
 
+    }
+
+    @Override
+    public AlternateCharacter getCharacterType() {
+        return AlternateCharacter.ROGUE;
     }
 
 
