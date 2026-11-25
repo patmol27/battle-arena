@@ -167,9 +167,6 @@ public class Game {
                 int specialAbilityDamage = specialAbilityResult;
                 System.out.println(attackingCharacter.getName() + " (" +
                         attackingCharacter.getCharacterType().toString().toLowerCase() +
-                        ") uses special ability!");
-                System.out.println(attackingCharacter.getName() + " (" +
-                        attackingCharacter.getCharacterType().toString().toLowerCase() +
                         ") deals " + specialAbilityDamage + " damage.");
 
                 int computerHp = defendingCharacter.takeDamage(specialAbilityDamage);
