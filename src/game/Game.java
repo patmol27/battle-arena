@@ -94,13 +94,10 @@ public class Game {
             }
 
             if (playerCooldown > 0) {
-                System.out.println("Special ability is currently on a cooldown/can't be used this turn, so " +
-                        playerCharacter.getName() + " attacks again!");
-                playerCooldown = act("1", playerCharacter, computerCharacter, playerCooldown);
+                playerCooldown = blockSpecialAbility(playerCooldown, playerCharacter, computerCharacter);
                 if (gameEnd) {
                     break;
                 }
-                playerCooldown--;
             } else {
                 while (true) {
                     System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
@@ -128,13 +125,10 @@ public class Game {
             }
 
             if (computerCooldown > 0) {
-                System.out.println("Special ability is currently on a cooldown/can't be used this turn, so " +
-                        computerCharacter.getName() + " attacks again!");
-                computerCooldown = act("1", computerCharacter, playerCharacter, computerCooldown);
+                computerCooldown = blockSpecialAbility(computerCooldown, computerCharacter, playerCharacter);
                 if (gameEnd) {
                     break;
                 }
-                computerCooldown--;
             } else {
                 String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
                 System.out.println("Computer's turn!");
@@ -205,4 +199,13 @@ public class Game {
         return attackerCooldown;
     }
 
+    public int blockSpecialAbility(int attackerCooldown, Character attackingCharacter, Character defendingCharacter) {
+        System.out.println("Special ability is currently on a cooldown/can't be used this turn, so " +
+                attackingCharacter.getName() + " attacks again!");
+        attackerCooldown = act("1", attackingCharacter, defendingCharacter, attackerCooldown);
+
+        attackerCooldown--;
+
+        return attackerCooldown;
+    }
 }
