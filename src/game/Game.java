@@ -92,7 +92,10 @@ public class Game {
 
         System.out.println("Your character: " + playerCharacter.getCharacterType().toString().toLowerCase() +
                 "\nThe computer's character: " +
-                computerCharacter.getCharacterType().toString().toLowerCase() + "\nLet's begin the battle!");
+                computerCharacter.getCharacterType().toString().toLowerCase());
+        System.out.println("\nEach character will start each turn by attacking.\n" +
+                "Then they will get to choose one additional\naction before their turn ends.\n");
+        System.out.println("Let's begin the battle!\n");
 
         while (true) {
             playerCooldown = act("1", playerCharacter, computerCharacter, playerCooldown);
