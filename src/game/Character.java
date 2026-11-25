@@ -21,7 +21,7 @@ public abstract class Character implements SpecialAbility {
     Random random = new Random();
 
     public int giveDamage(){
-        int damage = random.nextInt(minimumDamage,maximumDamage);
+        int damage = random.nextInt(minimumDamage, maximumDamage + 1);
         return damage;
     }
 
@@ -32,6 +32,7 @@ public abstract class Character implements SpecialAbility {
         }
         return hp;
     }
+
     public int getHp() {
 
         return hp;
