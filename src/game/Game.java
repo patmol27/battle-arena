@@ -16,13 +16,20 @@ public class Game {
         Character chosenPlayerCharacter;
 
         while (true) {
-            System.out.println("Choose a character. The characters are:\n1. Warrior\n2. Mage\n3. Rogue");
+            System.out.println("Choose a character. The characters are:\n1. Warrior\n2. Mage\n3. Rogue\n" +
+                    "----------\n4. Character information");
             String playerCharacter = scanner.nextLine();
 
-            if (!playerCharacter.trim().equalsIgnoreCase("Warrior") &&
+            if (playerCharacter.trim().equals("4")) {
+                CharacterStats characterStats = new CharacterStats();
+                characterStats.showStats();
+                continue;
+            }
+            else if (!playerCharacter.trim().equalsIgnoreCase("Warrior") &&
                     !playerCharacter.trim().equalsIgnoreCase("Mage") &&
                     !playerCharacter.trim().equalsIgnoreCase("Rogue") &&
-                    !playerCharacter.trim().equals("1") && !playerCharacter.trim().equals("2") &&
+                    !playerCharacter.trim().equals("1") &&
+                    !playerCharacter.trim().equals("2") &&
                     !playerCharacter.trim().equals("3")) {
                 System.out.println("You didn't enter a valid character! Try again.");
                 continue;
