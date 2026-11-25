@@ -20,7 +20,7 @@ public class Rogue extends Character{
     @Override
     public int specialAbility() {
         int damage = giveDamage();
-        System.out.println(super.getName() + " (Rogue) uses special abillity!");
+        System.out.println(super.getName() + " (rogue) uses special abillity!");
 
         if (random.nextInt(100) < 80) {
             damage = damage *2;
@@ -29,7 +29,7 @@ public class Rogue extends Character{
 
             System.out.println("Critical Strike!");
         }else {
-            System.out.println("abillity missed");
+            System.out.println("Abillity missed.");
         }
         return damage;
 

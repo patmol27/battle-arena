@@ -24,6 +24,7 @@ public class Warrior extends Character {
     public int takeDamage (int damage) {
         if (shield == true) {
             shield = false;
+            System.out.println("The attack gets absorbed by the shield! No damage taken and shield destroyed!");
         } else {
             super.takeDamage(damage);
             canUseShield = true;
