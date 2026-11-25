@@ -6,6 +6,7 @@ public class Game {
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
     private int playerCooldown = 0;
+    private int computerCooldown = 0;
     private boolean gameEnd = false;
 
     public Character setUpPlayerCharacter() {
@@ -87,7 +88,7 @@ public class Game {
                 computerCharacter.getCharacterType().toString().toLowerCase() + "\nLet's begin the battle!");
 
         while (true) {
-            act("1", playerCharacter, computerCharacter);
+            playerCooldown = act("1", playerCharacter, computerCharacter, playerCooldown);
             if (gameEnd) {
                 break;
             }
@@ -95,7 +96,7 @@ public class Game {
             if (playerCooldown > 0) {
                 System.out.println("Special ability is currently on a cooldown/can't be used this turn, so " +
                         playerCharacter.getName() + " attacks again!");
-                act("1", playerCharacter, computerCharacter);
+                playerCooldown = act("1", playerCharacter, computerCharacter, playerCooldown);
                 if (gameEnd) {
                     break;
                 }
@@ -107,7 +108,7 @@ public class Game {
                     String chosenPlayerAction = scanner.nextLine();
 
                     if (chosenPlayerAction.equals("1") || chosenPlayerAction.equals("2")) {
-                        act(chosenPlayerAction, playerCharacter, computerCharacter);
+                        playerCooldown = act(chosenPlayerAction, playerCharacter, computerCharacter, playerCooldown);
                         break;
                     } else {
                         System.out.println("You didn't pick a valid action! Try again.");
@@ -121,16 +122,24 @@ public class Game {
             if (gameOver(playerCharacter,computerCharacter)){
                 break;
             }
-            act("1", computerCharacter, playerCharacter);
+            computerCooldown = act("1", computerCharacter, playerCharacter, computerCooldown);
             if (gameEnd) {
                 break;
             }
 
-
-            String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
-            System.out.println("Computer's turn!");
-            act(randomisedComputerAction, computerCharacter, playerCharacter);
-
+            if (computerCooldown > 0) {
+                System.out.println("Special ability is currently on a cooldown/can't be used this turn, so " +
+                        computerCharacter.getName() + " attacks again!");
+                computerCooldown = act("1", computerCharacter, playerCharacter, computerCooldown);
+                if (gameEnd) {
+                    break;
+                }
+                computerCooldown--;
+            } else {
+                String randomisedComputerAction = String.valueOf(random.nextInt(1, 3));
+                System.out.println("Computer's turn!");
+                computerCooldown = act(randomisedComputerAction, computerCharacter, playerCharacter, computerCooldown);
+            }
         }
 
         if (playerCharacter.getHp() == 0) {
@@ -141,7 +150,7 @@ public class Game {
         }
     }
 
-    public void act(String chosenAction, Character attackingCharacter, Character defendingCharacter) {
+    public int act(String chosenAction, Character attackingCharacter, Character defendingCharacter, int attackerCooldown) {
         if (chosenAction.equals("1")) {
             int damageByPlayer = attackingCharacter.giveDamage();
             System.out.println(attackingCharacter.getName() + " (" +
@@ -155,9 +164,6 @@ public class Game {
             defendingCharacter.setHp(computerHp);
 
         } else if (chosenAction.equals("2")) {
-            //if (cooldown == 0) {
-            //cooldown = 2;
-
             int specialAbilityResult = attackingCharacter.specialAbility();
             if (attackingCharacter.getCharacterType().equals(AlternateCharacter.WARRIOR)) {
                 System.out.println(attackingCharacter.getName() + " (" +
@@ -188,14 +194,15 @@ public class Game {
                         ") is currently at " + computerHp + " HP.");
                 defendingCharacter.setHp(computerHp);
             }
+
+            attackerCooldown = 2;
         }
 
         if (defendingCharacter.getHp() == 0) {
             gameEnd = true;
         }
-        //} else {
-        //cooldown--;
-        //}
+
+        return attackerCooldown;
     }
 
 }
