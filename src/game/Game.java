@@ -200,8 +200,8 @@ public class Game {
     }
 
     public int blockSpecialAbility(int attackerCooldown, Character attackingCharacter, Character defendingCharacter) {
-        System.out.println("Special ability is currently on a cooldown/can't be used this turn, so " +
-                attackingCharacter.getName() + " attacks again!");
+        System.out.println("Special ability is currently on a cooldown and can't be used this turn, so " +
+                attackingCharacter.getName() + " attacks again!\n(" + attackerCooldown + " turn(s) left until special ability can be used.)");
         attackerCooldown = act("1", attackingCharacter, defendingCharacter, attackerCooldown);
 
         attackerCooldown--;
