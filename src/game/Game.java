@@ -5,7 +5,7 @@ import java.util.*;
 public class Game {
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
-    //private int cooldown = 0;
+    private int playerCooldown = 0;
     private boolean gameEnd = false;
 
     public Character setUpPlayerCharacter() {
@@ -92,20 +92,30 @@ public class Game {
                 break;
             }
 
-            while (true) {
-                System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
-                        "(3. Character information)");
-                String chosenPlayerAction = scanner.nextLine();
-
-                if (chosenPlayerAction.equals("1") || chosenPlayerAction.equals("2")) {
-                    act(chosenPlayerAction, playerCharacter, computerCharacter);
+            if (playerCooldown > 0) {
+                System.out.println("Special ability is currently on a cooldown/can't be used this turn, so " +
+                        playerCharacter.getName() + " attacks again!");
+                act("1", playerCharacter, computerCharacter);
+                if (gameEnd) {
                     break;
-                } else {
-                    System.out.println("You didn't pick a valid action! Try again.");
                 }
-            }
-            if (gameEnd) {
-                break;
+                playerCooldown--;
+            } else {
+                while (true) {
+                    System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
+                            "(3. Character information)");
+                    String chosenPlayerAction = scanner.nextLine();
+
+                    if (chosenPlayerAction.equals("1") || chosenPlayerAction.equals("2")) {
+                        act(chosenPlayerAction, playerCharacter, computerCharacter);
+                        break;
+                    } else {
+                        System.out.println("You didn't pick a valid action! Try again.");
+                    }
+                }
+                if (gameEnd) {
+                    break;
+                }
             }
 
             if (gameOver(playerCharacter,computerCharacter)){
