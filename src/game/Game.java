@@ -66,6 +66,8 @@ public class Game {
         Character playerCharacter = setUpPlayerCharacter();
         Character computerCharacter = setUpComputerCharacter();
 
+        boolean specialReady = true;
+
         System.out.println("Your character: " + playerCharacter.getCharacterType().toString().toLowerCase() +
                 "\nThe computer's character: " +
                 computerCharacter.getCharacterType().toString().toLowerCase() + "\nLet's begin the battle!");
@@ -79,21 +81,33 @@ public class Game {
                 System.out.println("Game is over! " + playerCharacter.getName() + " have won with " + playerCharacter.getHp()+ " remaining");
                 break;
             }
+
             while (true) {
 
-                act("1", playerCharacter, computerCharacter);
+                    System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
+                            "(3. Character information)");
 
-                System.out.println("Choose an action. You can pick between:\n1. Attack\n2. Special ability\n" +
-                        "(3. Character information)");
+                    if (specialReady) {
+                        System.out.println("Special ability ready!");
+                    } else {
+                        System.out.println("Special ability charging!");
+                    }
+
                 String chosenPlayerAction = scanner.nextLine();
 
-                if (chosenPlayerAction.equals("1") || chosenPlayerAction.equals("2")) {
+                if (chosenPlayerAction.equals("1")) {
                     act(chosenPlayerAction, playerCharacter, computerCharacter);
+                    specialReady = true;
                     break;
-                } else {
-                    System.out.println("You didn't pick a valid action! Try again.");
-                }
 
+                } else if (chosenPlayerAction.equals("2") && specialReady) {
+                    act(chosenPlayerAction, playerCharacter, computerCharacter);
+                    specialReady = false;
+                    break;
+
+                } else {
+                    System.out.println("You didn't pick a valid action! Try again! ");
+                }
             }
 
             act("1", computerCharacter, playerCharacter);
@@ -126,6 +140,7 @@ public class Game {
                     System.out.println(attackingCharacter.getName() + " (" +
                             attackingCharacter.getCharacterType().toString().toLowerCase() +
                             ") uses shield!");
+
 
                 } else if (attackingCharacter.getCharacterType().equals(AlternateCharacter.MAGE)) {
                     int playerHealingAmount = specialAbilityResult;
